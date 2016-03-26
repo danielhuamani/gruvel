@@ -19,12 +19,12 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 
-from home.views import IndexView
+from apps.home.views import IndexView
 
 from rest_framework import routers
 
-from events.views import EventViewSet
-from travels.views import TravelViewSet
+from apps.events.views import EventViewSet
+from apps.travels.views import TravelViewSet
 
 router = routers.DefaultRouter()
 router.register(r'events', EventViewSet)
