@@ -4,7 +4,7 @@ from os.path import join
 
 def get_env(base_dir):
     """ Obtenemos las 'variables de entorno' desde un archivo json."""
-    with open(join(base_dir, 'gruvel/settings/configuracion.json')) as f:
+    with open(join(base_dir, 'gruvel/settings/settings.json')) as f:
         env = json.load(f)
         return env
     return {}

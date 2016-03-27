@@ -13,6 +13,5 @@
     "SERVER_EMAIL": "",
     "EMAIL_PORT": 587,
 
-    "WORKON_HOME": "/home/{user}/.envs",
-    "ENV": "django_1_7"
+
 }

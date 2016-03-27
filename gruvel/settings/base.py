@@ -11,16 +11,16 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-
+from gruvel.util import get_env
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
+ENV = get_env(BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '19i9nes!az(+^smtohbyhjrs!2afteh1+i0#2739gw8@q19!fb'
+SECRET_KEY = ENV.get('SECRET_KEY', 'bbdd')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -87,8 +87,12 @@ WSGI_APPLICATION = 'gruvel.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': ENV.get('DB_NAME', 'bbdd'),
+        'USER': ENV.get('DB_USER'),
+        'PASSWORD': ENV.get('DB_PASSWORD'),
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
